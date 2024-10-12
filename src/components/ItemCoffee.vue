@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import { defineProps } from 'vue'
+import StartImage from '@/assets/resources/Star.svg'
+import StartImageFIll from '@/assets/resources/Star_fill.svg'
 
 const props = defineProps({
   name: String,
@@ -16,10 +18,7 @@ const props = defineProps({
 
 const img = ref(null)
 
-img.value =
-  Number(props.rating) === 0
-    ? '/src/assets/resources/Star.svg'
-    : '/src/assets/resources/Star_fill.svg'
+img.value = Number(props.rating) === 0 ? StartImage : StartImageFIll
 </script>
 
 <template>
