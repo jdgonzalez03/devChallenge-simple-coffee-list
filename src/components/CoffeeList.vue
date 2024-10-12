@@ -150,7 +150,7 @@ main {
 }
 
 .filters button:hover {
-  border: 1px solid var(--color-text-votes);
+  border-color: var(--color-text-votes);
   background-color: var(--color-text-votes);
 
   transform: translateY(-2px);
@@ -180,6 +180,15 @@ main {
     position: absolute;
     top: 2%;
     left: 40%;
+  }
+
+  .filters button {
+    transition: none;
+  }
+
+  .filters button:hover {
+    border-color: var(--color-text-votes);
+    background-color: var(--color-text-votes);
   }
 }
 </style>
