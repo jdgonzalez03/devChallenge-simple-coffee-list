@@ -29,3 +29,10 @@
   width: 100%;
   height: 100%;
 }
+
+@media (max-width: 640px) {
+  :root {
+    --font-size-heading: 1.5rem;
+    --font-size-label: 0.75rem;
+  }
+}

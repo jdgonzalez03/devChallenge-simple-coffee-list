@@ -23,3 +23,9 @@ body::before {
   background-repeat: no-repeat;
   z-index: -999;
 }
+
+@media (max-width) {
+  body {
+    padding: 1rem;
+  }
+}
