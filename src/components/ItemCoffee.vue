@@ -1,23 +1,44 @@
+<script setup>
+import { ref } from 'vue'
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  name: String,
+  image: String,
+  price: String,
+  rating: {
+    type: [Number, String]
+  },
+  votes: Number,
+  popular: Boolean,
+  available: Boolean
+})
+
+const img = ref(null)
+
+img.value =
+  Number(props.rating) === 0
+    ? '/src/assets/resources/Star.svg'
+    : '/src/assets/resources/Star_fill.svg'
+</script>
+
 <template>
   <article class="item">
-    <img
-      src="https://csyxkpbavpcrhwqhcpyy.supabase.co/storage/v1/object/public/assets/coffee-challenge/cappuccino.jpg"
-      alt="Cappuccino"
-    />
-    <span class="popular">Popular</span>
+    <img class="img-item" :src="image" :alt="name" />
+    <span class="popular" v-if="popular">Popular</span>
     <aside class="description-container">
-      <h2 class="title-item">Cappuccino</h2>
-      <p class="price">$5.20</p>
+      <h2 class="title-item">{{ name }}</h2>
+      <p class="price">{{ price }}</p>
     </aside>
     <aside class="container-rating">
       <ul>
         <li>
-          <img src="/src/assets/resources/Star_fill.svg" alt="Star rating" />
+          <img :src="img" alt="Star rating" />
         </li>
-        <li>5.0</li>
-        <li class="votes">(65 votes)</li>
+        <li v-if="rating > 0">{{ Number(rating) === 5 ? '5.0' : `${rating}` }}</li>
+        <li class="votes">{{ rating > 0 ? `(${votes} votes)` : 'No ratings' }}</li>
       </ul>
-      <p class="sold-out">Sold out</p>
+      <p class="sold-out" v-if="!available">Sold out</p>
     </aside>
   </article>
 </template>
@@ -25,6 +46,19 @@
 <style scoped>
 .item {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.item:hover {
+  transform: scale(0.95);
+}
+
+.img-item {
+  border-radius: 16px;
 }
 
 .container-rating {
