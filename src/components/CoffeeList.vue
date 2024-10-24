@@ -133,7 +133,7 @@ main {
 }
 
 .filters button {
-  font-size: var(--font-size-label);
+  font-size: var(--font-size-price);
   font-weight: 600;
   color: var(--color-text-content);
   background-color: transparent;
